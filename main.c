@@ -5,16 +5,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "function main.h"
 
 int main() {
 
     int registers[4] = {0, 0, 0, 0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
     //create a table 2 dimensions of char
 
-    char** variables = malloc(32* sizeof(char*));
+    char **variables = malloc(32 * sizeof(char *));
     for (int i = 0; i < 26; i++) {
         variables[i] = malloc(2 * sizeof(char));
-        variables[i][0] = (int)'A' + i;// define the different variables and put 0 for the first number
+        variables[i][0] = (int) 'A' + i;// define the different variables and put 0 for the first number
         variables[i][1] = '0';
     }
 
@@ -23,11 +24,51 @@ int main() {
     int pc = 0;//program counter
     int sp = 0;//stack pointer
 
-
-
-
-
     //Readind of the test.txt file
+    FILE *fichier = fopen("..\\test.txt", "r");
+    if (fichier != NULL) {
+        printf("File opened\n");
+        //Read by pack of 32 characters
+        char chaine1[32] = "";
+        //create a table 2 dimensions of char
+        char **tabPC = malloc(32 * sizeof(char *));
+        int j=0;
+        while (fread(chaine1, 32, 1, fichier) != 0) {
+
+            //append chaine1 to tabPC every 32 characters
+            tabPC[j] = malloc(32 * sizeof(char));
+            tabPC[j] = chaine1;
+            j++;
+
+        }
+        fclose(fichier);
+        operationInfo lineInfo;
+        lineInfo=giveInfoLine(tabPC[0]);
+        printf("%s",lineInfo.line);
+        printf("%d",lineInfo.operation);
+
+
+
+
+
+    } else {
+        printf("Error while opening the file\n");
+    }
+
+
+
+
+
+
+
+
+    return 0;
+
+}
+
+
+/*
+        //Readind of the test.txt file
     FILE* fichier = fopen("..\\test.txt", "r");
     if (fichier != NULL){
         printf("File opened\n");
@@ -46,6 +87,12 @@ int main() {
             for (int i = 0; i < 5; i++) {
                 decimal += (chaine2[i] - '0') * (1 << (4 - i));
             }
+        }
+    }
+    else{
+        printf("Error while opening the file\n");
+    }
+
 
             switch (decimal) {
                 case 0:{
@@ -131,9 +178,6 @@ int main() {
             }
 
         }
-    }
-    else{
-        printf("Error while opening the file\n");
-    }
-    return 0;
-}
+    }*/
+
+
