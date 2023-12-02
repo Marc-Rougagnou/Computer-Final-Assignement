@@ -7,6 +7,6 @@
 #include <string.h>
 
 int main() {
-    printf("Hello World!\n");
+    printf("Hello World ouais!\n");
     return 0;
 }
