@@ -5,7 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "function main.h"
+#include "function_main.h"
 
 int main() {
 
@@ -28,40 +28,30 @@ int main() {
     FILE *fichier = fopen("..\\test.txt", "r");
     if (fichier != NULL) {
         printf("File opened\n");
-        //Read by pack of 32 characters
-        char chaine1[32] = "";
-        //create a table 2 dimensions of char
+
+        // Read by pack of 32 characters
+        char chaine1[33];
+
+
+        // Create a table 2 dimensions of char
         char **tabPC = malloc(32 * sizeof(char *));
-        int j=0;
+        int j = 0;
         while (fread(chaine1, 32, 1, fichier) != 0) {
 
-            //append chaine1 to tabPC every 32 characters
-            tabPC[j] = malloc(32 * sizeof(char));
-            tabPC[j] = chaine1;
+            tabPC[j]= malloc(33 * sizeof(char));
+            chaine1[32] = '\0';
+            strncpy(tabPC[j], chaine1,32);
             j++;
-
         }
+
         fclose(fichier);
-        operationInfo lineInfo;
-        lineInfo=giveInfoLine(tabPC[0]);
-        printf("%s",lineInfo.line);
-        printf("%d",lineInfo.operation);
-
-
-
-
-
+        //printf tabPC
+        for (int i = 0; i < 32; i++) {
+            printf("%s\n", tabPC[i]);
+        }
     } else {
-        printf("Error while opening the file\n");
+        printf("Error opening the file\n");
     }
-
-
-
-
-
-
-
-
     return 0;
 
 }

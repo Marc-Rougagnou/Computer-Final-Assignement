@@ -2,8 +2,8 @@
 // Created by Marc on 02/12/2023.
 //
 
-#include "function main.h"
-
+#include "function_main.h"
+#include <stdio.h>
 operationInfo giveInfoLine (char* line){
     operationInfo lineInfo;
     lineInfo.line = line;
