@@ -7,12 +7,15 @@
 typedef struct {
     char *line;//line of the file
     int operation;//operation associated to the line
-    int type1; //0 for register / 1 for variable / 2 for constant
+    int type1; //1 for register / 2 for variable / 3 for constant
     int value1; //place in the table of the register or variable or the value of the constant
     int type2; //same as type1
     int value2; //same as value1
-    int type3; //same as type1
-    int value3; //same as value1
+    int label;
 } operationInfo;
 operationInfo giveInfoLine (char*);
+int type_register(char*, int);
+int type_variable(char*, int);
+int type_constant(char*, int);
+int convert_dec(char*, int);
 #endif //COMPUTER_FINAL_ASSIGNEMENT_FUNCTION_MAIN_H

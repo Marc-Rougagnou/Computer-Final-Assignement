@@ -46,9 +46,19 @@ int main() {
 
         fclose(fichier);
         //printf tabPC
-        for (int i = 0; i < 32; i++) {
+        for (int i = 0; i < 4; i++) {
             printf("%s\n", tabPC[i]);
         }
+
+        operationInfo lineInfo = giveInfoLine(tabPC[2]);
+        printf("%d\n", lineInfo.operation);
+        printf("%d\n", lineInfo.type1);
+        printf("%d\n", lineInfo.value1);
+        printf("%d\n", lineInfo.type2);
+        printf("%d\n", lineInfo.value2);
+        printf("%d\n", lineInfo.label);
+
+
     } else {
         printf("Error opening the file\n");
     }
