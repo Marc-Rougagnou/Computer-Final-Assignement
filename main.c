@@ -7,6 +7,26 @@
 #include <string.h>
 
 int main() {
+
+    int registers[4] = {0, 0, 0, 0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
+    //create a table 2 dimensions of char
+
+    char** variables = malloc(32* sizeof(char*));
+    for (int i = 0; i < 26; i++) {
+        variables[i] = malloc(2 * sizeof(char));
+        variables[i][0] = (int)'A' + i;// define the different variables and put 0 for the first number
+        variables[i][1] = '0';
+    }
+
+    char stack[32] = {'0'};//create the stack
+
+    int pc = 0;//program counter
+    int sp = 0;//stack pointer
+
+
+
+
+
     //Readind of the test.txt file
     FILE* fichier = fopen("..\\test.txt", "r");
     if (fichier != NULL){
@@ -15,22 +35,17 @@ int main() {
         //Read by pack of 32 characters
         char chaine1[32] = "";
         while (fread(chaine1, 32, 1, fichier) != 0) {
-            printf("%s\n", chaine1);
-
             //Retrive 5 first characters of the pack
             char chaine2[5] = "";
             for (int i = 0; i < 5; i++) {
-                printf("%c\n", chaine1[i]);
                 chaine2[i] = chaine1[i];
             }
-            printf("%s\n", chaine2);
 
             //Convert chaine2 which is binary to decimal
             int decimal = 0;
             for (int i = 0; i < 5; i++) {
                 decimal += (chaine2[i] - '0') * (1 << (4 - i));
             }
-            printf("%d\n\n", decimal);
 
             switch (decimal) {
                 case 0:{
