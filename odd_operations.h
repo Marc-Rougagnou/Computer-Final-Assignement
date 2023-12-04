@@ -7,6 +7,6 @@
 
 #include "function_main.h"
 
-void LDA(operationInfo lineInfo, int registers[], char variables[]);
-
+void LDA(operationInfo lineInfo, int registers[], int variables[]);
+void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[], int *sp);
 #endif //COMPUTER_FINAL_ASSIGNEMENT_ODD_OPERATIONS_H
