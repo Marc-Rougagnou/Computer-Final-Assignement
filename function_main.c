@@ -83,7 +83,6 @@ operationInfo giveInfoLine (char* line){
     }
     lineInfo.label=convert_dec(label, i);
 
-
     return lineInfo;
 
 }
