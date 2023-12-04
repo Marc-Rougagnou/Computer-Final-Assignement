@@ -64,6 +64,6 @@ void MOD(operationInfo lineInfo, char registers[], char variables[]){
     }
 }
 
-void DEC(operationInfo lineInfo, char registers[]){
+/*void DEC(operationInfo lineInfo, char registers[]){
     registers[lineInfo.value1]--;
-}
+}*/

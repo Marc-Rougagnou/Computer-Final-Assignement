@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "function_main.h"
+#include "odd_operations.h"
 
 int main() {
 
@@ -46,12 +47,13 @@ int main() {
 
         fclose(fichier);
         //printf tabPC
-        for (int i = 0; i < 4; i++) {
+        /*for (int i = 0; i < 4; i++) {
             printf("%s\n", tabPC[i]);
-        }
+        }*/
 
-        operationInfo lineInfo = giveInfoLine(tabPC[2]);
+        operationInfo lineInfo = giveInfoLine(tabPC[0]);
 
+        LDA(lineInfo, registers, variables);
 
 
     } else {
