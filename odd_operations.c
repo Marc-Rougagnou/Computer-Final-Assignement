@@ -206,4 +206,17 @@ void SUB(operationInfo lineInfo, int registers[], int variables[]){
     //lineInfo.value1 is the register to be loaded
     printf("Register number %d\n", lineInfo.value1);
 
+    if (lineInfo.type2 == 1){
+        printf("t%d - t%d store in t%d\n", lineInfo.value2, lineInfo.value1, lineInfo.value1);
+        registers[lineInfo.value1] = registers[lineInfo.value2] - registers[lineInfo.value1];
+    }
+    else if (lineInfo.type2 == 2){
+        printf("t%d - Var%d\n", lineInfo.value1, lineInfo.value2);
+        registers[lineInfo.value1] = variables[lineInfo.value2] - registers[lineInfo.value1];
+    }
+    else if (lineInfo.type2 == 3){
+        printf("t%d - %d\n", lineInfo.value1, lineInfo.value2);
+        registers[lineInfo.value1] = lineInfo.value2 - registers[lineInfo.value1];
+    }
+
 }

@@ -10,7 +10,7 @@
 
 int main() {
 
-    int registers[4] = {7, 0, 0, 0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
+    int registers[4] = {3, 7, 0, 0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
     //create a table 2 dimensions of char
 
     /*char **variables = malloc(32 * sizeof(char *));
@@ -63,7 +63,7 @@ int main() {
                 printf("0 : LDA\n");
                 LDA(lineInfo, registers, variables);
 
-                printf("register n %d have the value: %d\n", lineInfo.value1, registers[lineInfo.value1]);
+                printf("register t%d have the value: %d\n", lineInfo.value1, registers[lineInfo.value1]);
                 break;
             }
             case 1:{
@@ -86,7 +86,7 @@ int main() {
             case 4:{
                 printf("4 : AND\n");
                 AND(lineInfo, registers, variables);
-                printf("The new value of the register number %d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
+                printf("The new value of the register t%d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
 
                 break;
             }
@@ -97,7 +97,7 @@ int main() {
             case 6:{
                 printf("6 : NOT\n");
                 NOT(lineInfo, registers);
-                printf("The new value of the register number %d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
+                printf("The new value of the register t%d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
                 break;
             }
             case 7:{
@@ -106,6 +106,8 @@ int main() {
             }
             case 8:{
                 printf("8 : SUB\n");
+                SUB(lineInfo, registers, variables);
+                printf("The new value of the register t%d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
                 break;
             }
             case 9:{
