@@ -9,61 +9,64 @@
 
 void STR(operationInfo lineInfo, char registers[], char variables[]){
 
-    //demander pas compris ce qu'il fallait faire
+    //store const/reg dans la var
 }
 
-void POP(operationInfo lineInfo, char stack[],int sp, char registers[]){
+void POP(operationInfo lineInfo, int stack[],int sp, int registers[]){
     registers[lineInfo.value1]=stack[sp];
-}// faire sp-- après avoir fait pop
+}// faire sp-- après avoir fait pop pour mettre à jour la stack
+//vérifier que la stack n'est pas vide
 
-void OR(operationInfo lineInfo, char registers[], char variables[]){
-    if (lineInfo.type2==2){
+void OR(operationInfo lineInfo, int registers[], int variables[]){
+
+    if (lineInfo.type2==1){
+        registers[lineInfo.value1]=registers[lineInfo.value1] | registers[lineInfo.value2];
+    }
+    else if (lineInfo.type2==2){
         registers[lineInfo.value1]=registers[lineInfo.value1] | variables[lineInfo.value2];
     }
     else if (lineInfo.type2==3){
         registers[lineInfo.value1]=registers[lineInfo.value1] | lineInfo.value2;
     }
-    else if (lineInfo.type2==1){
-        registers[lineInfo.value1]=registers[lineInfo.value1] | registers[lineInfo.value2];
-    }
 }
 
-void ADD(operationInfo lineInfo, char registers[],char variables[]){
-    if (lineInfo.type2==2){
+void ADD(operationInfo lineInfo, int registers[],int variables[]){
+    if (lineInfo.type2==1){
+        registers[lineInfo.value1]=registers[lineInfo.value1] + registers[lineInfo.value2];
+    }
+    else if (lineInfo.type2==2){
         registers[lineInfo.value1]=registers[lineInfo.value1] + variables[lineInfo.value2];
     }
     else if (lineInfo.type2==3){
         registers[lineInfo.value1]=registers[lineInfo.value1] + lineInfo.value2;
     }
-    else if (lineInfo.type2==1){
-        registers[lineInfo.value1]=registers[lineInfo.value1] + registers[lineInfo.value2];
-    }
 }
 
-void DIV(operationInfo lineInfo, char registers[], char variables[]){
-    if (lineInfo.type2==2){
-        registers[lineInfo.value1]=registers[lineInfo.value1] / variables[lineInfo.value2];
+void DIV(operationInfo lineInfo, int registers[], int variables[]){
+    if (lineInfo.type2==1){
+        registers[lineInfo.value1]= registers[lineInfo.value2] / registers[lineInfo.value1];
+    }
+    else if (lineInfo.type2==2){
+        registers[lineInfo.value1]=variables[lineInfo.value2] / registers[lineInfo.value1] ;
     }
     else if (lineInfo.type2==3){
-        registers[lineInfo.value1]=registers[lineInfo.value1] / lineInfo.value2;
-    }
-    else if (lineInfo.type2==1){
-        registers[lineInfo.value1]=registers[lineInfo.value1] / registers[lineInfo.value2];
+        registers[lineInfo.value1]= lineInfo.value2 / registers[lineInfo.value1];
     }
 }
 
-void MOD(operationInfo lineInfo, char registers[], char variables[]){
-    if (lineInfo.type2==2){
-        registers[lineInfo.value1]=registers[lineInfo.value1] % variables[lineInfo.value2];
+void MOD(operationInfo lineInfo, int registers[], int variables[]){
+    if (lineInfo.type2==1){
+        registers[lineInfo.value1]=registers[lineInfo.value2] % registers[lineInfo.value1];
+    }
+    else if (lineInfo.type2==2){
+        registers[lineInfo.value1]=variables[lineInfo.value2] % registers[lineInfo.value1];
     }
     else if (lineInfo.type2==3){
-        registers[lineInfo.value1]=registers[lineInfo.value1] % lineInfo.value2;
+        registers[lineInfo.value1]=lineInfo.value2 % registers[lineInfo.value1];
     }
-    else if (lineInfo.type2==1){
-        registers[lineInfo.value1]=registers[lineInfo.value1] % registers[lineInfo.value2];
-    }
-}
 
+}
+/*
 void DEC(operationInfo lineInfo, char registers[]){
     registers[lineInfo.value1]--;
-}
+}*/

@@ -6,20 +6,19 @@
 #include <stdlib.h>
 #include <string.h>
 #include "function_main.h"
+#include "operation_pair.h"
 
 int main() {
 
     int registers[4] = {0, 0, 0, 0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
-    //create a table 2 dimensions of char
 
-    char **variables = malloc(32 * sizeof(char *));
+    int variables[26];//define the different variables and put 0 for the first number
     for (int i = 0; i < 26; i++) {
-        variables[i] = malloc(2 * sizeof(char));
-        variables[i][0] = (int) 'A' + i;// define the different variables and put 0 for the first number
-        variables[i][1] = '0';
+        variables[i] = i;
     }
 
-    char stack[32] = {'0'};//create the stack
+
+    int stack[32];//create the stack
 
     int pc = 0;//program counter
     int sp = 0;//stack pointer
@@ -32,25 +31,39 @@ int main() {
         // Read by pack of 32 characters
         char chaine1[33];
 
-
         // Create a table 2 dimensions of char
         char **tabPC = malloc(32 * sizeof(char *));
         int j = 0;
         while (fread(chaine1, 32, 1, fichier) != 0) {
-
             tabPC[j]= malloc(33 * sizeof(char));
             chaine1[32] = '\0';
             strncpy(tabPC[j], chaine1,32);
             j++;
         }
-
         fclose(fichier);
-        //printf tabPC
-        for (int i = 0; i < 4; i++) {
-            printf("%s\n", tabPC[i]);
-        }
 
-        operationInfo lineInfo = giveInfoLine(tabPC[2]);
+
+        operationInfo lineInfo = giveInfoLine(tabPC[0]);
+
+        //POP(lineInfo, stack, sp, registers);
+        //OR(lineInfo, registers, variables);
+        //ADD(lineInfo, registers, variables);
+        //DIV(lineInfo, registers, variables);
+        //MOD(lineInfo, registers, variables);
+        registers[0]=10;
+        registers[2]=50;
+        variables[0]=52;
+        printf("%d before\n",registers[0]);
+
+        printf("%d after\n", registers[0]);
+
+        /*
+        printf("%s line info\n", lineInfo.line);
+        printf("%d operation\n", lineInfo.operation);
+        printf("%d type1\n", lineInfo.type1);
+        printf("%d value1\n", lineInfo.value1);
+        printf("%d type2\n", lineInfo.type2);
+        printf("%d value2\n", lineInfo.value2);*/
 
 
 
