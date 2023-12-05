@@ -248,3 +248,141 @@ void INC(operationInfo lineInfo, int registers[]){
     //registers[lineInfo.value1] = registers[lineInfo.value1] + 1;
     registers[lineInfo.value1]++;
 }
+
+//BEQ <reg1>/<var1>/<const1> <reg2>/<var2>/<const2> <LABEL> - OP Code 01100
+//Performs a comparison between two values, given by registers, variables or constants. Any
+//combination is permitted. If they are equal, jump to the address defined by the label LABEL
+void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc){
+
+    //Type 1 register
+    if (lineInfo.type1 == 1){
+        //Type 2 register
+        if (lineInfo.type2 == 1){
+            if (registers[lineInfo.value1] == registers[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("t%d and t%d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        //Type 2 variable
+        }else if (lineInfo.type2 == 2){
+            if (registers[lineInfo.value1] == variables[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("t%d and Var%d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        //Type 2 constant
+        }else if(lineInfo.type2 == 3){
+            if (registers[lineInfo.value1] == lineInfo.value2){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("t%d and %d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        }
+
+    //Type 1 variable
+    }else if(lineInfo.type1 == 2){
+        //Type 2 register
+        if(lineInfo.type2 == 1){
+            if(variables[lineInfo.value1] == registers[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("Var%d and t%d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        //Type 2 variable
+        } else if (lineInfo.type2 == 2){
+            if (variables[lineInfo.value1] == variables[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("Var%d and Var%d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        }
+        //Type 2 constant
+        else if(lineInfo.type2 == 3){
+            if (variables[lineInfo.value1] == lineInfo.value2){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("Var%d and %d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        }
+
+    }
+    // Type 1 constant
+    else if (lineInfo.type1 == 3){
+        //Type 2 register
+        if(lineInfo.type2 == 1){
+            if(lineInfo.value1 == registers[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("%d and t%d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        //Type 2 variable
+        }else if(lineInfo.type2 == 2){
+            if(lineInfo.value1 == variables[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("%d and Var%d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        }else if(lineInfo.type2 == 3){
+            if(lineInfo.value1 == lineInfo.value2){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("%d and %d are not equal\n", lineInfo.value1, lineInfo.value2);
+            }
+        }
+    }
+
+
+
+    /*if (lineInfo.type1 == 1){
+        if (lineInfo.type2 == 1){
+            if (registers[lineInfo.value1] == registers[lineInfo.value2]){
+                *pc = lineInfo.label;
+            }
+        }
+        else if (lineInfo.type2 == 2){
+            if (registers[lineInfo.value1] == variables[lineInfo.value2]){
+                *pc = lineInfo.label;
+            }
+        }
+        else if (lineInfo.type2 == 3){
+            if (registers[lineInfo.value1] == lineInfo.value2){
+                *pc = lineInfo.label;
+            }
+        }
+    }
+    else if (lineInfo.type1 == 2){
+        if (lineInfo.type2 == 1){
+            if (variables[lineInfo.value1] == registers[lineInfo.value2]){
+                *pc = lineInfo.label;
+            }
+        }
+        else if (lineInfo.type2 == 2){
+            if (variables[lineInfo.value1] == variables[lineInfo.value2]){
+                *pc = lineInfo.label;
+            }
+        }
+        else if (lineInfo.type2 == 3){
+            if (variables[lineInfo.value1] == lineInfo.value2){
+                *pc = lineInfo.label;
+            }
+        }
+    }
+    else if (lineInfo.type1 == 3){
+        if (lineInfo.type2 == 1){
+            if (lineInfo.value1 == registers[lineInfo.value2]){
+                *pc = lineInfo.label;
+            }
+        }
+        else if (lineInfo.type2 == 2){
+            if (lineInfo.value1 == variables[lineInfo.value2]){
+                *pc = lineInfo.label;
+            }
+        }
+        else if (lineInfo.type2 == 3){
+            if (lineInfo.value1 == lineInfo.value2){
+                *pc = lineInfo.label;
+            }
+        }
+    }*/
+
+}
