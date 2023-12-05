@@ -52,17 +52,23 @@ int main() {
         //DIV(lineInfo, registers, variables);
         //MOD(lineInfo, registers, variables);
         //DEC(lineInfo, registers);
-        registers[0]=10;
-        registers[2]=50;
-        variables[0]=0;
+        registers[0]=20;
+        registers[1]=10;
+        registers[2]=30;
+        registers[3]=30;
+        variables[0]=22;
+        variables[1]=20;
+        //variables[1]=0;
 
-        printf("%d before\n",registers[3]);
-        //printf("%d before\n",variables[0]);
+
+        printf("%d pc\n", pc);
 
 
+        BSM(lineInfo, registers, variables, &pc);
+        printf("after\n");
 
-        //printf("%d after\n", variables[0]);
-        printf("%d after\n", registers[3]);
+        printf("%d pc\n", pc);
+        printf("\n\n%d label\n", lineInfo.label);
 
         /*
         printf("%s line info\n", lineInfo.line);
