@@ -45,17 +45,24 @@ int main() {
 
         operationInfo lineInfo = giveInfoLine(tabPC[0]);
 
+        //STR(lineInfo, registers, variables);
         //POP(lineInfo, stack, sp, registers);
         //OR(lineInfo, registers, variables);
         //ADD(lineInfo, registers, variables);
         //DIV(lineInfo, registers, variables);
         //MOD(lineInfo, registers, variables);
+        //DEC(lineInfo, registers);
         registers[0]=10;
         registers[2]=50;
-        variables[0]=52;
-        printf("%d before\n",registers[0]);
+        variables[0]=0;
 
-        printf("%d after\n", registers[0]);
+        printf("%d before\n",registers[3]);
+        //printf("%d before\n",variables[0]);
+
+
+
+        //printf("%d after\n", variables[0]);
+        printf("%d after\n", registers[3]);
 
         /*
         printf("%s line info\n", lineInfo.line);

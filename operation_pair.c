@@ -7,9 +7,14 @@
 #include "stdio.h"
 
 
-void STR(operationInfo lineInfo, char registers[], char variables[]){
-
+void STR(operationInfo lineInfo, int registers[], int variables[]){
     //store const/reg dans la var
+    if (lineInfo.type2==1){
+        variables[lineInfo.value1]=registers[lineInfo.value2];
+    }
+    else if (lineInfo.type2==3){
+        variables[lineInfo.value1]=lineInfo.value2;
+    }
 }
 
 void POP(operationInfo lineInfo, int stack[],int sp, int registers[]){
@@ -66,7 +71,7 @@ void MOD(operationInfo lineInfo, int registers[], int variables[]){
     }
 
 }
-/*
-void DEC(operationInfo lineInfo, char registers[]){
+
+void DEC(operationInfo lineInfo, int registers[]){
     registers[lineInfo.value1]--;
-}*/
+}
