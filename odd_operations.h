@@ -9,4 +9,7 @@
 
 void LDA(operationInfo lineInfo, int registers[], int variables[]);
 void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[], int *sp);
+void AND(operationInfo lineInfo, int registers[], int variables[]);
+
+void SUB(operationInfo lineInfo, int registers[], int variables[]);
 #endif //COMPUTER_FINAL_ASSIGNEMENT_ODD_OPERATIONS_H
