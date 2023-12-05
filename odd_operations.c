@@ -69,7 +69,6 @@ void AND(operationInfo lineInfo, int registers[], int variables[]) {
 
     //translate decimal to binary of the value of the register
     int temp_value1 = registers[lineInfo.value1];
-    printf("temp_value1 : %d\n", temp_value1);
     int binary1[8] = {0};
 
     for (int i = 7; i >= 0; i--) {
@@ -150,9 +149,51 @@ void AND(operationInfo lineInfo, int registers[], int variables[]) {
 //NOT <reg> - OP Code 00000
 //Performs a logical NOT operation on register reg and store the result on register reg. Memory
 //regions stores (store result into a variable, for instance) are NOT ALLOWED.
-void NOT(operationInfo lineInfo, int registers[], int variables[]) {
+void NOT(operationInfo lineInfo, int registers[]) {
     //lineInfo.value1 is the register to be loaded
     printf("Register number %d\n", lineInfo.value1);
+
+    //translate decimal to binary of the value of the register
+    int temp_value1 = registers[lineInfo.value1];
+    int binary1[8] = {0};
+
+    for (int i = 7; i >= 0; i--) {
+        binary1[i] = temp_value1 % 2;
+        temp_value1 = temp_value1 / 2;
+    }
+    //print binary1
+    printf("binary1 :");
+    for (int k = 0; k < 8; k++) {
+        printf("%d", binary1[k]);
+    }
+    printf("\n");
+
+    //NOT operation
+    int result[8];
+    for (int k = 0; k < 8; k++){
+        if (binary1[k] == 1) {
+            result[k] = 0;
+        } else {
+            result[k] = 1;
+        }
+    }
+
+    printf("result :");
+    for (int k = 0; k < 8; k++) {
+        printf("%d", result[k]);
+    }printf("\n");
+
+
+    //translate binary to decimal
+    int decimal = 0;
+    for (int k = 0; k < 8; k++){
+        decimal += result[k] * pow(2, 7-k);
+    }
+    printf("%d\n", decimal);
+
+    //Put the result in the register
+    registers[lineInfo.value1] = decimal;
+
 
 }
 

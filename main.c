@@ -86,6 +86,7 @@ int main() {
             case 4:{
                 printf("4 : AND\n");
                 AND(lineInfo, registers, variables);
+                printf("The new value of the register number %d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
 
                 break;
             }
@@ -95,6 +96,8 @@ int main() {
             }
             case 6:{
                 printf("6 : NOT\n");
+                NOT(lineInfo, registers);
+                printf("The new value of the register number %d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
                 break;
             }
             case 7:{
