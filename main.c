@@ -126,6 +126,8 @@ int main() {
             }
             case 12:{
                 printf("12 : INC\n");
+                INC(lineInfo, registers);
+                printf("The new value of the register t%d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
                 break;
             }
             case 13:{

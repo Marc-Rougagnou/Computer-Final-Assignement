@@ -239,3 +239,12 @@ void MUL(operationInfo lineInfo, int registers[], int variables[]){
         registers[lineInfo.value1] = registers[lineInfo.value1] * lineInfo.value2;
     }
 }
+
+//INC <reg> - OP Code 01010
+//Increments the value of a register reg. Memory increments (incrementing a variable, for instance)
+//are NOT ALLOWED.
+void INC(operationInfo lineInfo, int registers[]){
+    printf("t%d++\n", lineInfo.value1);
+    //registers[lineInfo.value1] = registers[lineInfo.value1] + 1;
+    registers[lineInfo.value1]++;
+}
