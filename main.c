@@ -116,6 +116,8 @@ int main() {
             }
             case 10:{
                 printf("10 : MUL\n");
+                MUL(lineInfo, registers, variables);
+                printf("The new value of the register t%d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
                 break;
             }
             case 11:{

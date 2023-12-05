@@ -12,4 +12,5 @@ void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[],
 void AND(operationInfo lineInfo, int registers[], int variables[]);
 void NOT(operationInfo lineInfo, int registers[]);
 void SUB(operationInfo lineInfo, int registers[], int variables[]);
+void MUL(operationInfo lineInfo, int registers[], int variables[]);
 #endif //COMPUTER_FINAL_ASSIGNEMENT_ODD_OPERATIONS_H

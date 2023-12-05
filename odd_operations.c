@@ -211,12 +211,31 @@ void SUB(operationInfo lineInfo, int registers[], int variables[]){
         registers[lineInfo.value1] = registers[lineInfo.value2] - registers[lineInfo.value1];
     }
     else if (lineInfo.type2 == 2){
-        printf("t%d - Var%d\n", lineInfo.value1, lineInfo.value2);
+        printf("t%d - Var%d store in t%d\n", lineInfo.value2, lineInfo.value1, lineInfo.value1);
         registers[lineInfo.value1] = variables[lineInfo.value2] - registers[lineInfo.value1];
     }
     else if (lineInfo.type2 == 3){
-        printf("t%d - %d\n", lineInfo.value1, lineInfo.value2);
+        printf("t%d - %d store in t%d\n", lineInfo.value2, lineInfo.value1, lineInfo.value1);
         registers[lineInfo.value1] = lineInfo.value2 - registers[lineInfo.value1];
     }
 
+}
+
+//MUL <reg1> <reg2>/<var>/<const> - OP Code 01000
+//Performs the integer multiplication operation of reg1 and a register reg2, a variable var or a
+//constant const, and store the result on register reg1. Memory regions stores (store result into a
+//variable, for instance) are NOT ALLOWED
+void MUL(operationInfo lineInfo, int registers[], int variables[]){
+    if (lineInfo.type2 == 1){
+        printf("t%d x t%d store in t%d\n", lineInfo.value1, lineInfo.value2, lineInfo.value1);
+        registers[lineInfo.value1] =  registers[lineInfo.value1] * registers[lineInfo.value2];
+    }
+    else if (lineInfo.type2 == 2){
+        printf("t%d * Var%d\n", lineInfo.value1, lineInfo.value2);
+        registers[lineInfo.value1] = registers[lineInfo.value1] * variables[lineInfo.value2];
+    }
+    else if (lineInfo.type2 == 3){
+        printf("t%d * %d\n", lineInfo.value1, lineInfo.value2);
+        registers[lineInfo.value1] = registers[lineInfo.value1] * lineInfo.value2;
+    }
 }
