@@ -8,6 +8,7 @@
 #include "function_main.h"
 #include "operation_pair.h"
 #include "odd_operations.h"
+#include "display.h"
 
 int main() {
 
@@ -44,13 +45,15 @@ int main() {
         printf("Error opening the file\n");
         return 0;
     }
-
+    variables[0] = 2;
+    variables[1] = 5;
     //print the table
     //faire while tabPC[pc] != NULL
     //faire le wait à chaque ligne
     //afficher les 4 registers et le pc à chaque ligne
 
     operationInfo lineInfo = giveInfoLine(tabPC[0]);
+    display_line(lineInfo);
 
     switch (lineInfo.operation) {
         case 0:{
@@ -62,6 +65,7 @@ int main() {
         }
         case 1:{
             printf("1 : STR\n");
+
             break;
         }
         case 2:{
