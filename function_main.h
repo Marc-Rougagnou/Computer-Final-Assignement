@@ -19,5 +19,6 @@ operationInfo giveInfoLine (char*);
 int type_register(char*, int);
 int type_variable(char*, int);
 int type_constant(char*, int);
+int name_variable(char*, int);
 int convert_dec(char*, int);
 #endif //COMPUTER_FINAL_ASSIGNEMENT_FUNCTION_MAIN_H

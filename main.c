@@ -22,6 +22,7 @@ int main() {
 
     int pc = 0;//program counter
     int sp = 0;//stack pointer
+    char **tabPC = malloc(32 * sizeof(char *));
 
     //Readind of the test.txt file
     FILE *fichier = fopen("..\\test.txt", "r");
@@ -32,7 +33,6 @@ int main() {
         char chaine1[33];
 
         // Create a table 2 dimensions of char
-        char **tabPC = malloc(32 * sizeof(char *));
         int j = 0;
         while (fread(chaine1, 32, 1, fichier) != 0) {
             tabPC[j] = malloc(33 * sizeof(char));
@@ -55,8 +55,16 @@ int main() {
 
     operationInfo lineInfo = giveInfoLine(tabPC[0]);
 
-    printf("lineInfo.operation = %d || %d || %d || %d\n", lineInfo.var1, lineInfo.value1, lineInfo.var2, lineInfo.value2);
-
+    //printf all info of the line
+    printf("lineInfo.line = %s\n", lineInfo.line);
+    printf("lineInfo.operation = %d\n", lineInfo.operation);
+    printf("lineInfo.type1 = %d\n", lineInfo.type1);
+    printf("lineInfo.type2 = %d\n", lineInfo.type2);
+    printf("lineInfo.var1 = %d\n", lineInfo.var1);
+    printf("lineInfo.var2 = %d\n", lineInfo.var2);
+    printf("lineInfo.value1 = %d\n", lineInfo.value1);
+    printf("lineInfo.value2 = %d\n", lineInfo.value2);
+    printf("lineInfo.label = %d\n", lineInfo.label);
 
     switch (lineInfo.operation) {
         case 0:{
