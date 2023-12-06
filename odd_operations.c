@@ -330,59 +330,87 @@ void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc){
             }
         }
     }
+}
 
-
-
-    /*if (lineInfo.type1 == 1){
+//BBG <reg1>/<var1>/<const1> <reg2>/<var2>/<const2> <LABEL> - OP Code 01110
+//Performs a comparison between two values, given by registers, variables or constants. Any
+//combination is permitted. If the first parameter is bigger than the second parameter, jump to the
+//address defined by the label LABEL
+void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
+    //Type 1 register
+    if (lineInfo.type1 == 1){
+        //Type 2 register
         if (lineInfo.type2 == 1){
-            if (registers[lineInfo.value1] == registers[lineInfo.value2]){
-                *pc = lineInfo.label;
+            if (registers[lineInfo.value1] > registers[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("t%d < t%dl\n", lineInfo.value1, lineInfo.value2);
+            }
+            //Type 2 variable
+        }else if (lineInfo.type2 == 2){
+            if (registers[lineInfo.value1] > variables[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("t%d < Var%d\n", lineInfo.value1, lineInfo.value2);
+            }
+            //Type 2 constant
+        }else if(lineInfo.type2 == 3){
+            if (registers[lineInfo.value1] > lineInfo.value2){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("t%d < %d\n", lineInfo.value1, lineInfo.value2);
             }
         }
-        else if (lineInfo.type2 == 2){
-            if (registers[lineInfo.value1] == variables[lineInfo.value2]){
-                *pc = lineInfo.label;
+
+        //Type 1 variable
+    }else if(lineInfo.type1 == 2){
+        //Type 2 register
+        if(lineInfo.type2 == 1){
+            if(variables[lineInfo.value1] > registers[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("Var%d < t%d\n", lineInfo.value1, lineInfo.value2);
+            }
+            //Type 2 variable
+        } else if (lineInfo.type2 == 2){
+            if (variables[lineInfo.value1] > variables[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("Var%d < Var%d\n", lineInfo.value1, lineInfo.value2);
             }
         }
-        else if (lineInfo.type2 == 3){
-            if (registers[lineInfo.value1] == lineInfo.value2){
-                *pc = lineInfo.label;
+            //Type 2 constant
+        else if(lineInfo.type2 == 3){
+            if (variables[lineInfo.value1] > lineInfo.value2){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("Var%d < %d\n", lineInfo.value1, lineInfo.value2);
             }
         }
+
     }
-    else if (lineInfo.type1 == 2){
-        if (lineInfo.type2 == 1){
-            if (variables[lineInfo.value1] == registers[lineInfo.value2]){
-                *pc = lineInfo.label;
-            }
-        }
-        else if (lineInfo.type2 == 2){
-            if (variables[lineInfo.value1] == variables[lineInfo.value2]){
-                *pc = lineInfo.label;
-            }
-        }
-        else if (lineInfo.type2 == 3){
-            if (variables[lineInfo.value1] == lineInfo.value2){
-                *pc = lineInfo.label;
-            }
-        }
-    }
+        // Type 1 constant
     else if (lineInfo.type1 == 3){
-        if (lineInfo.type2 == 1){
-            if (lineInfo.value1 == registers[lineInfo.value2]){
-                *pc = lineInfo.label;
+        //Type 2 register
+        if(lineInfo.type2 == 1){
+            if(lineInfo.value1 > registers[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("%d < t%d\n", lineInfo.value1, lineInfo.value2);
+            }
+            //Type 2 variable
+        }else if(lineInfo.type2 == 2){
+            if(lineInfo.value1 > variables[lineInfo.value2]){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("%d < Var%d\n", lineInfo.value1, lineInfo.value2);
+            }
+        }else if(lineInfo.type2 == 3){
+            if(lineInfo.value1 > lineInfo.value2){
+                *pc = lineInfo.label + 1;
+            }else{
+                printf("%d < %d\n", lineInfo.value1, lineInfo.value2);
             }
         }
-        else if (lineInfo.type2 == 2){
-            if (lineInfo.value1 == variables[lineInfo.value2]){
-                *pc = lineInfo.label;
-            }
-        }
-        else if (lineInfo.type2 == 3){
-            if (lineInfo.value1 == lineInfo.value2){
-                *pc = lineInfo.label;
-            }
-        }
-    }*/
-
+    }
 }

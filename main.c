@@ -10,7 +10,7 @@
 
 int main() {
 
-    int registers[4] = {8, 7, 0, 0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
+    int registers[4] = {8, 7, 0, 14};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
     //create a table 2 dimensions of char
 
     /*char **variables = malloc(32 * sizeof(char *));
@@ -147,6 +147,9 @@ int main() {
             }
             case 16:{
                 printf("16 : BBG\n");
+                printf("The value of the program counter is %d\n", pc);
+                BBG(lineInfo, registers, variables, &pc);
+                printf("The new value of the program counter is %d\n", pc);
                 break;
             }
             case 17:{
