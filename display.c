@@ -30,13 +30,22 @@ void display_sp(int sp){
     printf("Stack pointer: %d\n", sp);
 }
 
-void display_stack(int stack[]){
+void display_stack(int stack[],int sp){
     printf("Stack: ");
-    for (int i = 0; i < 32; ++i) {
+    for (int i = 0; i < sp; ++i) {
         printf("%d ", stack[i]);
     }
     printf("\n");
 }
+
+void display_variables(int variables[]){
+    printf("Variables: ");
+    for (int i = 0; i < 8; ++i) {
+        printf("%d ", variables[i]);
+    }
+    printf("\n");
+}
+
 
 void display_line(operationInfo lineInfo){
     switch (lineInfo.operation){
