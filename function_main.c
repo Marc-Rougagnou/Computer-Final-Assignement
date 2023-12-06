@@ -40,6 +40,8 @@ operationInfo giveInfoLine (char* line){
         cpt+=2;
     }
     else if (lineInfo.type1==2){
+        lineInfo.var1=type_variable(line, cpt);
+        cpt+=3;
         lineInfo.value1=type_variable(line, cpt);
         cpt+=5;
     }
@@ -51,7 +53,7 @@ operationInfo giveInfoLine (char* line){
     char type2[2]="";
     type2[0]=line[cpt];
     type2[1]=line[cpt+1];
-    //Convert type2 which is binary to decimal
+
     if (type2[0]=='0' && type2[1]=='1'){
         lineInfo.type2=1;
     }
@@ -67,6 +69,8 @@ operationInfo giveInfoLine (char* line){
         cpt+=2;
     }
     else if (lineInfo.type2==2){
+        lineInfo.var2=type_variable(line, cpt);
+        cpt+=3;
         lineInfo.value2=type_variable(line, cpt);
         cpt+=5;
     }
@@ -82,7 +86,6 @@ operationInfo giveInfoLine (char* line){
         cpt++;
     }
     lineInfo.label=convert_dec(label, i);
-
     return lineInfo;
 
 }
