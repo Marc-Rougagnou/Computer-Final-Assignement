@@ -259,21 +259,21 @@ void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 register
         if (lineInfo.type2 == 1){
             if (registers[lineInfo.value1] == registers[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("t%d and t%d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
         //Type 2 variable
         }else if (lineInfo.type2 == 2){
             if (registers[lineInfo.value1] == variables[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("t%d and Var%d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
         //Type 2 constant
         }else if(lineInfo.type2 == 3){
             if (registers[lineInfo.value1] == lineInfo.value2){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("t%d and %d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
@@ -284,14 +284,14 @@ void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 register
         if(lineInfo.type2 == 1){
             if(variables[lineInfo.value1] == registers[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("Var%d and t%d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
         //Type 2 variable
         } else if (lineInfo.type2 == 2){
             if (variables[lineInfo.value1] == variables[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("Var%d and Var%d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
@@ -299,7 +299,7 @@ void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 constant
         else if(lineInfo.type2 == 3){
             if (variables[lineInfo.value1] == lineInfo.value2){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("Var%d and %d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
@@ -311,20 +311,20 @@ void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 register
         if(lineInfo.type2 == 1){
             if(lineInfo.value1 == registers[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("%d and t%d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
         //Type 2 variable
         }else if(lineInfo.type2 == 2){
             if(lineInfo.value1 == variables[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("%d and Var%d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
         }else if(lineInfo.type2 == 3){
             if(lineInfo.value1 == lineInfo.value2){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("%d and %d are not equal\n", lineInfo.value1, lineInfo.value2);
             }
@@ -342,21 +342,21 @@ void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 register
         if (lineInfo.type2 == 1){
             if (registers[lineInfo.value1] > registers[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("t%d < t%dl\n", lineInfo.value1, lineInfo.value2);
             }
             //Type 2 variable
         }else if (lineInfo.type2 == 2){
             if (registers[lineInfo.value1] > variables[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("t%d < Var%d\n", lineInfo.value1, lineInfo.value2);
             }
             //Type 2 constant
         }else if(lineInfo.type2 == 3){
             if (registers[lineInfo.value1] > lineInfo.value2){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("t%d < %d\n", lineInfo.value1, lineInfo.value2);
             }
@@ -367,14 +367,14 @@ void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 register
         if(lineInfo.type2 == 1){
             if(variables[lineInfo.value1] > registers[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("Var%d < t%d\n", lineInfo.value1, lineInfo.value2);
             }
             //Type 2 variable
         } else if (lineInfo.type2 == 2){
             if (variables[lineInfo.value1] > variables[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("Var%d < Var%d\n", lineInfo.value1, lineInfo.value2);
             }
@@ -382,7 +382,7 @@ void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
             //Type 2 constant
         else if(lineInfo.type2 == 3){
             if (variables[lineInfo.value1] > lineInfo.value2){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("Var%d < %d\n", lineInfo.value1, lineInfo.value2);
             }
@@ -394,20 +394,20 @@ void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
         //Type 2 register
         if(lineInfo.type2 == 1){
             if(lineInfo.value1 > registers[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("%d < t%d\n", lineInfo.value1, lineInfo.value2);
             }
             //Type 2 variable
         }else if(lineInfo.type2 == 2){
             if(lineInfo.value1 > variables[lineInfo.value2]){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("%d < Var%d\n", lineInfo.value1, lineInfo.value2);
             }
         }else if(lineInfo.type2 == 3){
             if(lineInfo.value1 > lineInfo.value2){
-                *pc = lineInfo.label + 1;
+                *pc = lineInfo.label;
             }else{
                 printf("%d < %d\n", lineInfo.value1, lineInfo.value2);
             }
@@ -418,5 +418,5 @@ void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
 //JMP <LABEL> - OP Code 10000
 //Jump to the address defined by the label LABEL
 void JMP(operationInfo lineInfo, int *pc){
-    *pc = lineInfo.label + 1;
+    *pc = lineInfo.label;
 }

@@ -4,6 +4,7 @@
 
 #include "function_main.h"
 #include "stdio.h"
+#include <string.h>
 operationInfo giveInfoLine (char* line){
     int cpt= 0;
     operationInfo lineInfo;
@@ -141,6 +142,19 @@ int convert_dec(char* tab, int size){
         decimal += (tab[i] - '0') * (1 << (size - i -1));
     }
     return decimal;
+}
+
+void wait(){
+    //wait for the user to press "ok" + add verification
+    char verif[100] = " ";
+
+    int result;
+    do{
+        printf("Enter 'ok' to pass at the next instruction \n");
+        result = scanf("%s", &verif); //we store the result
+
+    }while(strcmp(verif, "ok") != 0);
+
 }
 
 

@@ -21,4 +21,5 @@ int type_variable(char*, int);
 int type_constant(char*, int);
 int name_variable(char*, int);
 int convert_dec(char*, int);
+void wait();
 #endif //COMPUTER_FINAL_ASSIGNEMENT_FUNCTION_MAIN_H
