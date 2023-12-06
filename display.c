@@ -6,7 +6,7 @@
 
 
 
-void display_register(int registers[]){
+void display_register(int registers[]){//display all the registers
     printf("Register t0: %d\n", registers[0]);
     printf("Register t1: %d\n", registers[1]);
     printf("Register t2: %d\n", registers[2]);
@@ -14,11 +14,11 @@ void display_register(int registers[]){
 }
 
 
-void display_pc(int pc){
+void display_pc(int pc){//display the program counter
     printf("Program counter: %d\n", pc);
 }
 
-void display_tabPC(char **tabPC){
+void display_tabPC(char **tabPC){//display the array of all the lines of codes in binary
     printf("Table of program counter: \n");
     for (int i = 0; i < 32; ++i) {
         printf("%s\n", tabPC[i]);
@@ -26,11 +26,11 @@ void display_tabPC(char **tabPC){
 }
 
 
-void display_sp(int sp){
+void display_sp(int sp){//display the stack pointer
     printf("Stack pointer: %d\n", sp);
 }
 
-void display_stack(int stack[],int sp){
+void display_stack(int stack[],int sp){//display the stack
     printf("Stack: ");
     for (int i = 0; i < sp; ++i) {
         printf("%d ", stack[i]);
@@ -38,7 +38,7 @@ void display_stack(int stack[],int sp){
     printf("\n");
 }
 
-void display_variables(int variables[]){
+void display_variables(int variables[]){//display all the variables
     printf("Variables: ");
     for (int i = 0; i < 8; ++i) {
         printf("%d ", variables[i]);
@@ -47,7 +47,7 @@ void display_variables(int variables[]){
 }
 
 
-void display_line(operationInfo lineInfo){
+void display_line(operationInfo lineInfo){//display the line of code in assembly(not binary)
     switch (lineInfo.operation){
         case 0:{
             printf("LDA ");

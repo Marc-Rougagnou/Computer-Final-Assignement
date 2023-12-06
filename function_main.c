@@ -4,7 +4,7 @@
 
 #include "function_main.h"
 #include "stdio.h"
-operationInfo giveInfoLine (char* line){
+operationInfo giveInfoLine (char* line){//translate the line of binary code into a structure
     int cpt= 0;
     operationInfo lineInfo;
     lineInfo.line = line;
@@ -20,7 +20,7 @@ operationInfo giveInfoLine (char* line){
     }
     lineInfo.operation = decimal;
     cpt+=5;
-
+    //the first parameter
     char type1[2]="";
     type1[0]=line[cpt];
     type1[1]=line[cpt+1];
@@ -49,7 +49,7 @@ operationInfo giveInfoLine (char* line){
         lineInfo.value1=type_constant(line, cpt);
         cpt+=8;
     }
-
+    //the second parameter
     char type2[2]="";
     type2[0]=line[cpt];
     type2[1]=line[cpt+1];
@@ -78,6 +78,7 @@ operationInfo giveInfoLine (char* line){
         lineInfo.value2=type_constant(line, cpt);
         cpt+=8;
     }
+    //the label
     char label[19]="";
     int i=0;
     while (cpt!=32){
@@ -86,10 +87,11 @@ operationInfo giveInfoLine (char* line){
         cpt++;
     }
     lineInfo.label=convert_dec(label, i);
-    return lineInfo;
+    return lineInfo;//return the structure that is filled
 
 }
 
+//convert binary to decimal for the register
 int type_register(char* line, int cpt){
     char reg[2] = "";
     for (int i = 0; i < 2; i++) {
@@ -101,6 +103,7 @@ int type_register(char* line, int cpt){
     return decimal;
 }
 
+//convert binary to decimal for the variable
 int type_variable(char* line, int cpt){
     char var[5] = "";
     for (int i = 0; i < 5; i++) {
@@ -112,6 +115,7 @@ int type_variable(char* line, int cpt){
     return decimal;
 }
 
+//convert binary to decimal for the constant
 int type_constant(char* line, int cpt){
     char cons[8] = "";
     for (int i = 0; i < 8; i++) {
@@ -123,6 +127,7 @@ int type_constant(char* line, int cpt){
     return decimal;
 }
 
+//convert binary to decimal for the name of the variable
 int name_variable(char* line, int cpt){
     char name[3] = "";
     for (int i = 0; i < 3; i++) {
@@ -134,7 +139,7 @@ int name_variable(char* line, int cpt){
     return decimal;
 }
 
-
+//convert binary to decimal
 int convert_dec(char* tab, int size){
     int decimal = 0;
     for (int i = 0; i < size; i++) {
