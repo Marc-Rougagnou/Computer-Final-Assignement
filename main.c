@@ -13,10 +13,7 @@ int main() {
 
     int registers[4] = {8, 7, 0, 14};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
 
-    int variables[26];
-    for (int i = 0; i < 26; i++) {
-        variables[i] = i;
-    }
+    int variables[8];//create the variables
 
     int stack[32];//create the stack
 
@@ -54,17 +51,6 @@ int main() {
     //afficher les 4 registers et le pc à chaque ligne
 
     operationInfo lineInfo = giveInfoLine(tabPC[0]);
-
-    //printf all info of the line
-    printf("lineInfo.line = %s\n", lineInfo.line);
-    printf("lineInfo.operation = %d\n", lineInfo.operation);
-    printf("lineInfo.type1 = %d\n", lineInfo.type1);
-    printf("lineInfo.type2 = %d\n", lineInfo.type2);
-    printf("lineInfo.var1 = %d\n", lineInfo.var1);
-    printf("lineInfo.var2 = %d\n", lineInfo.var2);
-    printf("lineInfo.value1 = %d\n", lineInfo.value1);
-    printf("lineInfo.value2 = %d\n", lineInfo.value2);
-    printf("lineInfo.label = %d\n", lineInfo.label);
 
     switch (lineInfo.operation) {
         case 0:{
