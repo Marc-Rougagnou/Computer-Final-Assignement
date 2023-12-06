@@ -158,6 +158,9 @@ int main() {
             }
             case 18:{
                 printf("18 : JMP\n");
+                printf("The value of the program counter is %d\n", pc);
+                JMP(lineInfo, &pc);
+                printf("The new value of the program counter is %d\n", pc);
                 break;
             }
             case 19:{

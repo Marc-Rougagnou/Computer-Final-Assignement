@@ -16,4 +16,5 @@ void MUL(operationInfo lineInfo, int registers[], int variables[]);
 void INC(operationInfo lineInfo, int registers[]);
 void BEQ(operationInfo lineInfo, int registers[], int variables[], int *pc);
 void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc);
+void JMP(operationInfo lineInfo, int *pc);
 #endif //COMPUTER_FINAL_ASSIGNEMENT_ODD_OPERATIONS_H

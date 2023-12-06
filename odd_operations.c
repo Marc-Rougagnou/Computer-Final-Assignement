@@ -414,3 +414,9 @@ void BBG(operationInfo lineInfo, int registers[], int variables[], int *pc){
         }
     }
 }
+
+//JMP <LABEL> - OP Code 10000
+//Jump to the address defined by the label LABEL
+void JMP(operationInfo lineInfo, int *pc){
+    *pc = lineInfo.label + 1;
+}
