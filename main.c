@@ -6,6 +6,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include "function_main.h"
+#include "operation_pair.h"
+
 #include "odd_operations.h"
 
 int main() {
@@ -25,6 +27,7 @@ int main() {
     }
 
     //char stack[32] = {'0'};//create the stack
+
     int stack[32];//create the stack
 
     int pc = 0;//program counter
@@ -38,23 +41,17 @@ int main() {
         // Read by pack of 32 characters
         char chaine1[33];
 
-
         // Create a table 2 dimensions of char
         char **tabPC = malloc(32 * sizeof(char *));
         int j = 0;
         while (fread(chaine1, 32, 1, fichier) != 0) {
-
             tabPC[j]= malloc(33 * sizeof(char));
             chaine1[32] = '\0';
             strncpy(tabPC[j], chaine1,32);
             j++;
         }
-
-        fclose(fichier);
-        //printf tabPC
-        /*for (int i = 0; i < 4; i++) {
-            printf("%s\n", tabPC[i]);
-        }*/
+        fclose(fichier);      
+     
 
         operationInfo lineInfo = giveInfoLine(tabPC[0]);
 
@@ -87,6 +84,7 @@ int main() {
                 printf("4 : AND\n");
                 AND(lineInfo, registers, variables);
                 printf("The new value of the register t%d is %d\n", lineInfo.value1, registers[lineInfo.value1]);
+
 
                 break;
             }
