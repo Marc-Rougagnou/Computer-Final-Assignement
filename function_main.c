@@ -43,8 +43,6 @@ operationInfo giveInfoLine (char* line){//translate the line of binary code into
         cpt+=2;
     }
     else if (lineInfo.type1==2){
-        lineInfo.var1=name_variable(line, cpt);
-        cpt+=3;
         lineInfo.value1=type_variable(line, cpt);
         cpt+=5;
     }
@@ -72,8 +70,6 @@ operationInfo giveInfoLine (char* line){//translate the line of binary code into
         cpt+=2;
     }
     else if (lineInfo.type2==2){
-        lineInfo.var2=name_variable(line, cpt);
-        cpt+=3;
         lineInfo.value2=type_variable(line, cpt);
         cpt+=5;
     }
@@ -130,7 +126,7 @@ int type_constant(char* line, int cpt){
 }
 
 //convert binary to decimal for the name of the variable
-int name_variable(char* line, int cpt){
+/*int name_variable(char* line, int cpt){
     char name[3] = "";
     for (int i = 0; i < 3; i++) {
         name[i] = line[cpt+i];
@@ -139,7 +135,7 @@ int name_variable(char* line, int cpt){
     int decimal = 0;
     decimal= convert_dec(name, 3);
     return decimal;
-}
+}*/
 
 //convert binary to decimal
 int convert_dec(char* tab, int size){

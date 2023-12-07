@@ -7,10 +7,12 @@
 
 
 void display_register(int registers[]){//display all the registers
-    printf("Register t0: %d\n", registers[0]);
-    printf("Register t1: %d\n", registers[1]);
-    printf("Register t2: %d\n", registers[2]);
-    printf("Register t3: %d\n", registers[3]);
+    printf("Registers: \n");
+    for (int i = 0; i < 4; ++i) {
+        if(registers[i] != -1){
+            printf("t%d: %d\n", i, registers[i]);
+        }
+    }
 }
 
 
@@ -31,7 +33,7 @@ void display_sp(int sp){//display the stack pointer
 }
 
 void display_stack(int stack[],int sp){//display the stack
-    printf("Stack: ");
+    printf("Stack: \n");
     for (int i = 0; i < sp; ++i) {
         printf("%d ", stack[i]);
     }
@@ -39,9 +41,11 @@ void display_stack(int stack[],int sp){//display the stack
 }
 
 void display_variables(int variables[]){//display all the variables
-    printf("Variables: ");
-    for (int i = 0; i < 8; ++i) {
-        printf("%d ", variables[i]);
+    printf("Variables: \n");
+    for (int i = 0; i < 26; ++i) {
+        if(variables[i] != -1){
+            printf("%c: %d \n", (char)i+65, variables[i]);
+        }
     }
     printf("\n");
 }
@@ -140,7 +144,7 @@ void display_line(operationInfo lineInfo){//display the line of code in assembly
             break;
         }
         case 2:{
-            printf("%c",(char)lineInfo.var1+65);
+            printf("%c",(char)lineInfo.value1+65);
             break;
         }
         case 3:{
@@ -158,7 +162,7 @@ void display_line(operationInfo lineInfo){//display the line of code in assembly
             break;
         }
         case 2:{
-            printf(", %c",(char)lineInfo.var2+65);
+            printf(", %c",(char)lineInfo.value2+65);
             break;
         }
         case 3:{

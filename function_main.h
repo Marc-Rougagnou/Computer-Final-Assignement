@@ -12,14 +12,12 @@ typedef struct {
     int type2; //same as type1
     int value2; //same as value1
     int label;
-    int var1;//nom de la variable --> numéro par rapport à sa place dans l'alphabet si type1 = 2
-    int var2;//nom de la variable --> numéro par rapport à sa place dans l'alphabet si type2 = 2
 } operationInfo;
 operationInfo giveInfoLine (char*);
 int type_register(char*, int);
 int type_variable(char*, int);
 int type_constant(char*, int);
-int name_variable(char*, int);
+//int name_variable(char*, int);
 int convert_dec(char*, int);
 void wait();
 #endif //COMPUTER_FINAL_ASSIGNEMENT_FUNCTION_MAIN_H
