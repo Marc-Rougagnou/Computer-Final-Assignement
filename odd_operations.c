@@ -10,10 +10,6 @@
 //Load register reg1 with the contents of either the contents of reg2, or the memory var or a constant
 //const. Memory regions loads (load into a variable, for instance) are NOT ALLOWED
 void LDA(operationInfo lineInfo, int registers[], int variables[]){
-    //lineInfo.value1 is the register to be loaded
-    printf("Register number %d\n", lineInfo.value1);
-
-
     // if type2 is a register
     if (lineInfo.type2==1){
         registers[lineInfo.value1] = registers[lineInfo.value2];

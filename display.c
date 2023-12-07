@@ -11,24 +11,14 @@ void display_register(int registers[]){//display all the registers
     for (int i = 0; i < 4; ++i) {
         printf("t%d: %d\n", i, registers[i]);
     }
+    printf("\n");
 }
 
 
 void display_pc(int pc){//display the program counter
-    printf("Program counter: %d\n", pc);
+    printf("Program counter: %d\n\n", pc);
 }
 
-void display_tabPC(char **tabPC){//display the array of all the lines of codes in binary
-    printf("Table of program counter: \n");
-    for (int i = 0; i < 32; ++i) {
-        printf("%s\n", tabPC[i]);
-    }
-}
-
-
-void display_sp(int sp){//display the stack pointer
-    printf("Stack pointer: %d\n", sp);
-}
 
 void display_stack(int stack[],int sp){//display the stack
     if (sp == 0){
@@ -40,16 +30,29 @@ void display_stack(int stack[],int sp){//display the stack
             printf("%d\n", stack[i]);
         }
     }
-    printf("End of the stack\n");
+    printf("\n");
 }
 
+
 void display_variables(int variables[], int variables_use[]){//display all the variables
-    printf("Variables: \n");
-    for (int i = 0; i < 26; ++i) {
+    int cnt = 0;
+    for(int i = 0; i < 26; ++i){
+        if(variables_use[i] != 0){
+            cnt++;
+        }
+    }
+    if(cnt == 0){
+        printf("There is no variables\n");
+        return;
+    }
+    else{
+      printf("Variables: \n");
+      for (int i = 0; i < 26; ++i) {
         if(variables_use[i] == 1){
             printf("%c: %d \n", (char)i+65, variables[i]);
         }
-    }
+      }
+      }
     printf("\n");
 }
 
