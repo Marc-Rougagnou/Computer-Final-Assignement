@@ -91,7 +91,6 @@ operationInfo giveInfoLine (char* line){//translate the line of binary code into
     }
     lineInfo.label=convert_dec(label, i);
     return lineInfo;//return the structure that is filled
-
 }
 
 //convert binary to decimal for the register

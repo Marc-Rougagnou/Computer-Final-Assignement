@@ -12,9 +12,12 @@
 
 int main() {
 
-    int registers[4] = {8, 7, 0, 14};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
+    int registers[4] = {-1, -1, -1, -1};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
 
-    int variables[8];//create the variables
+    int variables[26];//create the variables for all the letters of the alphabet
+    for (int i = 0; i < 26; ++i) {
+        variables[i] = -1;
+    }
 
     int stack[32];//create the stack
 
@@ -47,15 +50,13 @@ int main() {
         printf("Error opening the file\n");
         return 0;
     }
-    variables[0] = 2;
-    variables[1] = 5;
 
-    
+    for (int i = 0; i < line_program; ++i) {
+        display_line(giveInfoLine(tabPC[i]));
+    }
 
-    //browse table tabPC (pc is line +)
-    printf("The value of the program counter is %d\n", pc);
+    //browse table tabPC (pc is line +1)
     while (pc != line_program + 1){
-        printf("I am in the while\n");
         operationInfo lineInfo = giveInfoLine(tabPC[pc - 1]);
         display_line(lineInfo);
 
@@ -232,5 +233,4 @@ int main() {
     printf("The program is finished\n");
 
     return 0;
-
 }
