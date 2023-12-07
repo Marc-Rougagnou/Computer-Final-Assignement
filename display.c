@@ -191,6 +191,5 @@ void display_line(operationInfo lineInfo){//display the line of code in assembly
 
     }
     printf("\n");
-
 }
 
