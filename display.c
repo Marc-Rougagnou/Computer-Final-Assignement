@@ -13,24 +13,14 @@ void display_register(int registers[]){//display all the registers
             printf("t%d: %d\n", i, registers[i]);
         }
     }
+    printf("\n");
 }
 
 
 void display_pc(int pc){//display the program counter
-    printf("Program counter: %d\n", pc);
+    printf("Program counter: %d\n\n", pc);
 }
 
-void display_tabPC(char **tabPC){//display the array of all the lines of codes in binary
-    printf("Table of program counter: \n");
-    for (int i = 0; i < 32; ++i) {
-        printf("%s\n", tabPC[i]);
-    }
-}
-
-
-void display_sp(int sp){//display the stack pointer
-    printf("Stack pointer: %d\n", sp);
-}
 
 void display_stack(int stack[],int sp){//display the stack
     if (sp == 0){
@@ -42,7 +32,7 @@ void display_stack(int stack[],int sp){//display the stack
             printf("%d\n", stack[i]);
         }
     }
-    printf("End of the stack\n");
+    printf("\n");
 }
 
 void display_variables(int variables[]){//display all the variables

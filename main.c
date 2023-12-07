@@ -61,93 +61,93 @@ int main() {
     printf("\nStart the execution: \n\n");
     wait();
     //browse table tabPC (pc is line +1)
-    while (pc != line_program + 1){
+    while (pc != line_program + 1) {
         operationInfo lineInfo = giveInfoLine(tabPC[pc - 1]);
 
         display_line(lineInfo);
 
         switch (lineInfo.operation) {
-            case 0:{
+            case 0: {
                 LDA(lineInfo, registers, variables);
                 break;
             }
-            case 1:{;
+            case 1: { ;
                 STR(lineInfo, registers, variables);
                 break;
             }
-            case 2:{
+            case 2: {
                 PUSH(lineInfo, registers, variables, stack, &sp);
                 break;
             }
-            case 3:{
-                if (sp != 0){
+            case 3: {
+                if (sp != 0) {
                     POP(lineInfo, stack, &sp, registers);
                 }
                 break;
             }
-            case 4:{
+            case 4: {
                 AND(lineInfo, registers, variables);
                 break;
             }
-            case 5:{
+            case 5: {
                 OR(lineInfo, registers, variables);
                 break;
             }
-            case 6:{
+            case 6: {
                 NOT(lineInfo, registers);
                 break;
             }
-            case 7:{
+            case 7: {
                 ADD(lineInfo, registers, variables);
                 break;
             }
-            case 8:{
+            case 8: {
                 SUB(lineInfo, registers, variables);
                 break;
             }
-            case 9:{
+            case 9: {
                 DIV(lineInfo, registers, variables);
                 break;
             }
-            case 10:{
+            case 10: {
                 MUL(lineInfo, registers, variables);
                 break;
             }
-            case 11:{
+            case 11: {
                 MOD(lineInfo, registers, variables);
                 break;
             }
-            case 12:{
+            case 12: {
                 INC(lineInfo, registers);
                 break;
             }
-            case 13:{
+            case 13: {
                 DEC(lineInfo, registers);
                 break;
             }
-            case 14:{
+            case 14: {
                 BEQ(lineInfo, registers, variables, &pc);
                 break;
             }
-            case 15:{
+            case 15: {
                 BNE(lineInfo, registers, variables, &pc);
                 break;
             }
-            case 16:{
+            case 16: {
                 BBG(lineInfo, registers, variables, &pc);
                 break;
             }
-            case 17:{
+            case 17: {
                 BSM(lineInfo, registers, variables, &pc);
                 break;
             }
-            case 18:{
+            case 18: {
                 JMP(lineInfo, &pc);
                 break;
             }
-            case 19:{
+            case 19: {
                 printf("HTL \n");
-                pc = line_program + 1;
+                pc = line_program;
                 break;
             }
         }
@@ -160,10 +160,15 @@ int main() {
         //display the program counter
         pc++;
         display_pc(pc);
-        //wait for the user to input "ok"
-        wait();
+        if (pc != line_program + 1) {
+            lineInfo = giveInfoLine(tabPC[pc - 1]);
+            printf("The next instruction is: ");
+            display_line(lineInfo);
+            //wait for the user to input "ok"
+            wait();
+        }
+
     }
     printf("The program is finished\n");
 
-    return 0;
 }
