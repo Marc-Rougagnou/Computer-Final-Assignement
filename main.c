@@ -153,7 +153,6 @@ int main() {
                 break;
             }
             case 19: {
-                printf("HTL \n");
                 pc = line_program;
                 break;
             }
@@ -168,7 +167,7 @@ int main() {
         pc++;
         display_pc(pc);
         if (pc != line_program + 1) {
-            lineInfo = giveInfoLine(tabPC[pc - 1]);
+            lineInfo = giveInfoLine(tabPC[pc - 1], variables_use);
             printf("The next instruction is: ");
             display_line(lineInfo);
             //wait for the user to input "ok"
