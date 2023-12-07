@@ -33,11 +33,16 @@ void display_sp(int sp){//display the stack pointer
 }
 
 void display_stack(int stack[],int sp){//display the stack
-    printf("Stack: \n");
-    for (int i = 0; i < sp; ++i) {
-        printf("%d ", stack[i]);
+    if (sp == 0){
+        printf("The stack is empty");
     }
-    printf("\n");
+    else{
+        printf("Stack: \n");
+        for (int i = 0; i < sp; ++i) {
+            printf("%d\n", stack[i]);
+        }
+    }
+    printf("End of the stack\n");
 }
 
 void display_variables(int variables[]){//display all the variables
@@ -190,6 +195,5 @@ void display_line(operationInfo lineInfo){//display the line of code in assembly
 
     }
     printf("\n");
-
 }
 
