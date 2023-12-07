@@ -9,9 +9,7 @@
 void display_register(int registers[]){//display all the registers
     printf("Registers: \n");
     for (int i = 0; i < 4; ++i) {
-        if(registers[i] != -1){
-            printf("t%d: %d\n", i, registers[i]);
-        }
+        printf("t%d: %d\n", i, registers[i]);
     }
     printf("\n");
 }
@@ -35,10 +33,11 @@ void display_stack(int stack[],int sp){//display the stack
     printf("\n");
 }
 
-void display_variables(int variables[]){//display all the variables
+
+void display_variables(int variables[], int variables_use[]){//display all the variables
     int cnt = 0;
     for(int i = 0; i < 26; ++i){
-        if(variables[i] != -1){
+        if(variables_use[i] != 0){
             cnt++;
         }
     }
@@ -47,13 +46,13 @@ void display_variables(int variables[]){//display all the variables
         return;
     }
     else{
-        printf("Variables: \n");
-        for (int i = 0; i < 26; ++i) {
-            if(variables[i] != -1){
-                printf("%c: %d \n", (char)i+65, variables[i]);
-            }
+      printf("Variables: \n");
+      for (int i = 0; i < 26; ++i) {
+        if(variables_use[i] == 1){
+            printf("%c: %d \n", (char)i+65, variables[i]);
         }
-    }
+      }
+      }
     printf("\n");
 }
 

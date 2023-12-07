@@ -13,9 +13,9 @@ typedef struct {
     int value2; //same as value1
     int label;
 } operationInfo;
-operationInfo giveInfoLine (char*);
+operationInfo giveInfoLine (char*, int variable_use[]);
 int type_register(char*, int);
-int type_variable(char*, int);
+int type_variable(char*, int, int variable_use[]);
 int type_constant(char*, int);
 //int name_variable(char*, int);
 int convert_dec(char*, int);

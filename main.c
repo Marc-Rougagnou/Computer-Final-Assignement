@@ -12,11 +12,16 @@
 
 int main() {
 
-    int registers[4] = {-1, -1, -1, -1};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
+    int registers[4] = {0,0,0,0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
 
     int variables[26];//create the variables for all the letters of the alphabet
     for (int i = 0; i < 26; ++i) {
-        variables[i] = -1;
+        variables[i] = 0;
+    }
+
+    int variables_use[26];//create the variables for all the letters of the alphabet
+    for (int i = 0; i < 26; ++i) {
+        variables_use[i] = -1;
     }
 
     int stack[32];//create the stack
@@ -56,13 +61,15 @@ int main() {
     }
 
     for (int i = 0; i < line_program; ++i) {
-        display_line(giveInfoLine(tabPC[i]));
+        display_line(giveInfoLine(tabPC[i], variables_use));
     }
     printf("\nStart the execution: \n\n");
     wait();
     //browse table tabPC (pc is line +1)
-    while (pc != line_program + 1) {
-        operationInfo lineInfo = giveInfoLine(tabPC[pc - 1]);
+
+    while (pc != line_program + 1){
+        operationInfo lineInfo = giveInfoLine(tabPC[pc - 1], variables_use);
+
 
         display_line(lineInfo);
 
@@ -154,7 +161,7 @@ int main() {
         //display all the registers
         display_register(registers);
         //display all the variables
-        display_variables(variables);
+        display_variables(variables, variables_use);
         //display all the stack
         display_stack(stack, sp);
         //display the program counter
