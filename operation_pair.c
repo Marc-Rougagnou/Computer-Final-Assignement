@@ -7,8 +7,9 @@
 #include "stdio.h"
 
 
-void STR(operationInfo lineInfo, int registers[], int variables[]){
+void STR(operationInfo lineInfo, int registers[], int variables[], int variables_use[]){
     //store const/reg in the given var
+    variables_use[lineInfo.value1]=1;
     if (lineInfo.type2==1){
         variables[lineInfo.value1]=registers[lineInfo.value2];
     }

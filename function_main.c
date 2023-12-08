@@ -6,7 +6,8 @@
 #include "stdio.h"
 #include <string.h>
 
-operationInfo giveInfoLine (char* line, int variable_use[]){//translate the line of binary code into a structure
+operationInfo giveInfoLine (char* line, int variables_use[]){//translate the line of binary code into a structure
+
 
     int cpt= 0;
     operationInfo lineInfo;
@@ -43,7 +44,7 @@ operationInfo giveInfoLine (char* line, int variable_use[]){//translate the line
         cpt+=2;
     }
     else if (lineInfo.type1==2){
-        lineInfo.value1=type_variable(line, cpt, variable_use);
+        lineInfo.value1=type_variable(line, cpt, variables_use);
         cpt+=5;
     }
     else if (lineInfo.type1==3){
@@ -70,7 +71,7 @@ operationInfo giveInfoLine (char* line, int variable_use[]){//translate the line
         cpt+=2;
     }
     else if (lineInfo.type2==2){
-        lineInfo.value2=type_variable(line, cpt, variable_use);
+        lineInfo.value2=type_variable(line, cpt, variables_use);
         cpt+=5;
     }
     else if (lineInfo.type2==3){
@@ -102,7 +103,8 @@ int type_register(char* line, int cpt){
 }
 
 //convert binary to decimal for the variable
-int type_variable(char* line, int cpt, int variable_use[]){
+
+int type_variable(char* line, int cpt, int variables_use[]){
     char var[5] = "";
     for (int i = 0; i < 5; i++) {
         var[i] = line[cpt+i];
@@ -110,7 +112,7 @@ int type_variable(char* line, int cpt, int variable_use[]){
     //Convert var which is binary to decimal
     int decimal = 0;
     decimal= convert_dec(var, 5);
-    variable_use[decimal] = 1;
+    variables_use[decimal] = -1;
     return decimal;
 }
 

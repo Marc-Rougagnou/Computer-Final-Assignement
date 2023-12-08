@@ -37,7 +37,7 @@ void display_stack(int stack[],int sp){//display the stack
 void display_variables(int variables[], int variables_use[]){//display all the variables
     int cnt = 0;
     for(int i = 0; i < 26; ++i){
-        if(variables_use[i] != 0){
+        if(variables_use[i] != -1){
             cnt++;
         }
     }
@@ -48,7 +48,7 @@ void display_variables(int variables[], int variables_use[]){//display all the v
     else{
       printf("Variables: \n");
       for (int i = 0; i < 26; ++i) {
-        if(variables_use[i] == 1){
+        if(variables_use[i] != -1){
             printf("%c: %d \n", (char)i+65, variables[i]);
         }
       }
