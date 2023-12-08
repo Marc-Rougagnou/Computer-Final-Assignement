@@ -12,11 +12,16 @@
 
 int main() {
 
-    int registers[4] = {-1, -1, -1, -1};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
+    int registers[4] = {0,0,0,0};//Registers t0 on 0 t1 on 1 t2 on 2 and t3 on 3
 
     int variables[26];//create the variables for all the letters of the alphabet
     for (int i = 0; i < 26; ++i) {
-        variables[i] = -1;
+        variables[i] = 0;
+    }
+
+    int variables_use[26];//create the variables for all the letters of the alphabet
+    for (int i = 0; i < 26; ++i) {
+        variables_use[i] = -1;
     }
 
     int stack[32];//create the stack
@@ -56,15 +61,23 @@ int main() {
     }
 
     for (int i = 0; i < line_program; ++i) {
-        display_line(giveInfoLine(tabPC[i]));
+        display_line(giveInfoLine(tabPC[i], variables_use));
     }
+    printf("Do you want to execute the program step by step (1) or all at once (2)?\n");
+    int choice;
+    scanf("%d", &choice);
+
     printf("\nStart the execution: \n\n");
     wait();
     //browse table tabPC (pc is line +1)
-    while (pc != line_program + 1) {
-        operationInfo lineInfo = giveInfoLine(tabPC[pc - 1]);
 
-        display_line(lineInfo);
+    while (pc != line_program + 1){
+        operationInfo lineInfo = giveInfoLine(tabPC[pc - 1], variables_use);
+
+        if(choice == 1){
+            display_line(lineInfo);
+        }
+
 
         switch (lineInfo.operation) {
             case 0: {
@@ -72,7 +85,7 @@ int main() {
                 break;
             }
             case 1: { ;
-                STR(lineInfo, registers, variables);
+                STR(lineInfo, registers, variables, variables_use);
                 break;
             }
             case 2: {
@@ -146,28 +159,41 @@ int main() {
                 break;
             }
             case 19: {
-                printf("HTL \n");
+                if (choice == 1) {
+                    printf("HLT\n");
+                }
                 pc = line_program;
                 break;
             }
         }
+        if(choice==1) {
+            //display all the registers
+            display_register(registers);
+            //display all the variables
+            display_variables(variables, variables_use);
+            //display all the stack
+            display_stack(stack, sp);
+        }
+        pc++;
+        if(choice==1) {
+            display_pc(pc);
+            if (pc != line_program + 1) {
+                lineInfo = giveInfoLine(tabPC[pc - 1], variables_use);
+                printf("The next instruction is: ");
+                display_line(lineInfo);
+                //wait for the user to input "ok"
+                wait();
+            }
+        }
+    }
+    if(choice==2) {
+        printf("the final state of the program is:\n");
         //display all the registers
         display_register(registers);
         //display all the variables
-        display_variables(variables);
+        display_variables(variables, variables_use);
         //display all the stack
         display_stack(stack, sp);
-        //display the program counter
-        pc++;
-        display_pc(pc);
-        if (pc != line_program + 1) {
-            lineInfo = giveInfoLine(tabPC[pc - 1]);
-            printf("The next instruction is: ");
-            display_line(lineInfo);
-            //wait for the user to input "ok"
-            wait();
-        }
-
     }
     printf("The program is finished\n");
 
