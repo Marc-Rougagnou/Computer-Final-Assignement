@@ -78,7 +78,6 @@ int main() {
             display_line(lineInfo);
         }
 
-
         switch (lineInfo.operation) {
             case 0: {
                 LDA(lineInfo, registers, variables);
@@ -194,6 +193,7 @@ int main() {
         display_variables(variables, variables_use);
         //display all the stack
         display_stack(stack, sp);
+
     }
     printf("The program is finished\n");
 

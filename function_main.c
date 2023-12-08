@@ -8,6 +8,7 @@
 
 operationInfo giveInfoLine (char* line, int variables_use[]){//translate the line of binary code into a structure
 
+
     int cpt= 0;
     operationInfo lineInfo;
     lineInfo.line = line;
@@ -102,6 +103,7 @@ int type_register(char* line, int cpt){
 }
 
 //convert binary to decimal for the variable
+
 int type_variable(char* line, int cpt, int variables_use[]){
     char var[5] = "";
     for (int i = 0; i < 5; i++) {
