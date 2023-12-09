@@ -34,7 +34,6 @@ int main() {
     //Reading of the test.txt file
     FILE *fichier = fopen("..\\test.txt", "r");
     if (fichier != NULL) {
-        printf("File opened\n");
 
         // Read by pack of 32 characters
         char chaine1[33];
@@ -63,9 +62,30 @@ int main() {
     for (int i = 0; i < line_program; ++i) {
         display_line(giveInfoLine(tabPC[i], variables_use));
     }
-    printf("Do you want to execute the program step by step (1) or all at once (2)?\n");
+    /*printf("Do you want to execute the program step by step (1) or all at once (2)?\n");
     int choice;
-    scanf("%d", &choice);
+    scanf("%d", &choice);*/
+
+
+    int choice = 0;
+    int result;
+    //Ask for the rows
+    do{
+        printf("Do you want to execute the program step by step (1) or all at once (2)?\n");
+        result = scanf("%d", &choice); //we store the result
+
+        //If it's equal to 0 we don't have the good entry
+        if (result == 0) {
+            //We pass all the character that the user had enter
+            while (getchar() != '\n') {
+            }
+            printf("Invalid input, please enter a number.\n\n");
+        }
+    }while(choice != 1 && choice != 2);
+
+
+
+
 
     printf("\nStart the execution: \n\n");
     wait();
@@ -161,9 +181,6 @@ int main() {
                 break;
             }
             case 19: {
-                if (choice == 1) {
-                    printf("HLT\n");
-                }
                 pc = line_program;
                 break;
             }
