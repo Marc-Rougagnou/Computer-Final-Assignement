@@ -164,7 +164,7 @@ void display_line(operationInfo lineInfo){//display the line of code in assembly
         }
         case 1:{
 
-            printf(", t%d ",lineInfo.value2);
+            printf(", t%d",lineInfo.value2);
             break;
         }
         case 2:{
