@@ -177,6 +177,11 @@ void display_line(operationInfo lineInfo){//display the line of code in assembly
         }
     }
     switch(lineInfo.operation){
+
+        case 14:{
+            printf(", %d", lineInfo.label);
+            break;
+        }
         case 15:{
             printf(", %d", lineInfo.label);
             break;
