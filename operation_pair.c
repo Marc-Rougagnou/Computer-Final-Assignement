@@ -6,7 +6,7 @@
 #include "function_main.h"
 #include "stdio.h"
 
-
+/*
 void STR(operationInfo lineInfo, int registers[], int variables[], int variables_use[]){
     //store const/reg in the given var
     variables_use[lineInfo.value1]=1;
@@ -22,7 +22,8 @@ void POP(operationInfo lineInfo, int stack[],int sp, int registers[]){
     registers[lineInfo.value1]=stack[sp-1];
 }// faire sp-- après avoir fait pop pour mettre à jour la stack
 //vérifier que la stack n'est pas vide
-
+ */
+/*
 void OR(operationInfo lineInfo, int registers[], int variables[]){
     //execute the OR operation between the two given parameters and store the result in the first parameter
     if (lineInfo.type2==1){
@@ -34,7 +35,7 @@ void OR(operationInfo lineInfo, int registers[], int variables[]){
     else if (lineInfo.type2==3){
         registers[lineInfo.value1]=registers[lineInfo.value1] | lineInfo.value2;
     }
-}
+}*/
 
 void ADD(operationInfo lineInfo, int registers[],int variables[]){
     //execute the ADD operation between the two given parameters and store the result in the first parameter

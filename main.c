@@ -6,8 +6,10 @@
 #include <stdlib.h>
 #include <string.h>
 #include "function_main.h"
-#include "operation_pair.h"
-#include "odd_operations.h"
+#include "arthimetic_function.h"
+#include "compare.h"
+#include "logic_function.h"
+#include "memory_function.h"
 #include "display.h"
 
 int main() {
@@ -161,9 +163,6 @@ int main() {
                 break;
             }
             case 19: {
-                if (choice == 1) {
-                    printf("HLT\n");
-                }
                 pc = line_program;
                 break;
             }
