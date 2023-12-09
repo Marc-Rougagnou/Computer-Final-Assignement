@@ -31,7 +31,7 @@ int main() {
     int sp = 0;//stack pointer
     char **tabPC = malloc(32 * sizeof(char *));
 
-    //Readind of the test.txt file
+    //Reading of the test.txt file
     FILE *fichier = fopen("..\\test.txt", "r");
     if (fichier != NULL) {
         printf("File opened\n");
