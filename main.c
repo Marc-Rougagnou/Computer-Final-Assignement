@@ -31,7 +31,7 @@ int main() {
     int sp = 0;//stack pointer
     char **tabPC = malloc(32 * sizeof(char *));
 
-    //Readind of the test.txt file
+    //Reading of the test.txt file
     FILE *fichier = fopen("..\\test.txt", "r");
     if (fichier != NULL) {
         printf("File opened\n");
@@ -83,17 +83,20 @@ int main() {
                 LDA(lineInfo, registers, variables);
                 break;
             }
-            case 1: { ;
+            case 1: {
                 STR(lineInfo, registers, variables, variables_use);
+
                 break;
             }
             case 2: {
-                PUSH(lineInfo, registers, variables, stack, &sp);
+                PUSH(lineInfo, registers, variables, stack, sp);
+                sp++;
                 break;
             }
             case 3: {
                 if (sp != 0) {
-                    POP(lineInfo, stack, &sp, registers);
+                    POP(lineInfo, stack, sp, registers);
+                    sp--;
                 }
                 break;
             }
@@ -196,5 +199,4 @@ int main() {
 
     }
     printf("The program is finished\n");
-
 }
