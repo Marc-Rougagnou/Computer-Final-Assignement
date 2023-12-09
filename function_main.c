@@ -127,18 +127,6 @@ int type_constant(char* line, int cpt){
     return decimal;
 }
 
-//convert binary to decimal for the name of the variable
-/*int name_variable(char* line, int cpt){
-    char name[3] = "";
-    for (int i = 0; i < 3; i++) {
-        name[i] = line[cpt+i];
-    }
-    //Convert name which is binary to decimal
-    int decimal = 0;
-    decimal= convert_dec(name, 3);
-    return decimal;
-}*/
-
 //convert binary to decimal
 int convert_dec(char* tab, int size){
     int decimal = 0;
