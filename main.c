@@ -59,17 +59,16 @@ int main() {
         return 0;
     }
 
+    //Display the program
+    printf("The program is: \n");
     for (int i = 0; i < line_program; ++i) {
         display_line(giveInfoLine(tabPC[i], variables_use));
     }
-    /*printf("Do you want to execute the program step by step (1) or all at once (2)?\n");
-    int choice;
-    scanf("%d", &choice);*/
 
 
+    //Ask the user if he wants to execute the program step by step or all at once
     int choice = 0;
     int result;
-    //Ask for the rows
     do{
         printf("Do you want to execute the program step by step (1) or all at once (2)?\n");
         result = scanf("%d", &choice); //we store the result
@@ -88,7 +87,6 @@ int main() {
 
 
     printf("\nStart the execution: \n\n");
-    wait();
     //browse table tabPC (pc is line +1)
 
     while (pc != line_program + 1){
@@ -186,6 +184,7 @@ int main() {
             }
         }
         if(choice==1) {
+            printf("\nThe state of the program is:\n");
             //display all the registers
             display_register(registers);
             //display all the variables
@@ -200,6 +199,7 @@ int main() {
                 lineInfo = giveInfoLine(tabPC[pc - 1], variables_use);
                 printf("The next instruction is: ");
                 display_line(lineInfo);
+                printf("\n\n");
                 //wait for the user to input "ok"
                 wait();
             }
