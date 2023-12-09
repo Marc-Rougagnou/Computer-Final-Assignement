@@ -8,7 +8,7 @@
 #include "function_main.h"
 
 void LDA(operationInfo lineInfo, int registers[], int variables[]);
-void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[], int *sp);
+void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[], int sp);
 void AND(operationInfo lineInfo, int registers[], int variables[]);
 void NOT(operationInfo lineInfo, int registers[]);
 void SUB(operationInfo lineInfo, int registers[], int variables[]);

@@ -110,7 +110,6 @@ int type_variable(char* line, int cpt, int variables_use[]){
     //Convert var which is binary to decimal
     int decimal = 0;
     decimal= convert_dec(var, 5);
-    variables_use[decimal] = -1;
     return decimal;
 }
 

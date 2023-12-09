@@ -78,23 +78,25 @@ int main() {
             display_line(lineInfo);
         }
 
-
         switch (lineInfo.operation) {
             case 0: {
                 LDA(lineInfo, registers, variables);
                 break;
             }
-            case 1: { ;
+            case 1: {
                 STR(lineInfo, registers, variables, variables_use);
+
                 break;
             }
             case 2: {
-                PUSH(lineInfo, registers, variables, stack, &sp);
+                PUSH(lineInfo, registers, variables, stack, sp);
+                sp++;
                 break;
             }
             case 3: {
                 if (sp != 0) {
-                    POP(lineInfo, stack, &sp, registers);
+                    POP(lineInfo, stack, sp, registers);
+                    sp--;
                 }
                 break;
             }

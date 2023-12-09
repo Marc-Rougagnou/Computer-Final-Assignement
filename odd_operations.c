@@ -28,23 +28,20 @@ void LDA(operationInfo lineInfo, int registers[], int variables[]){
 
 //PUSH <reg>/<var>/<const> - OP Code 00010
 //Push to the top of the stack the contents of reg or var or a constant const
-void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[], int *sp){
+void PUSH(operationInfo lineInfo, int registers[], int variables[], int stack[], int sp){
     // if type1 is a register
     if (lineInfo.type1==1){
-        stack[*sp] = registers[lineInfo.value1];
-        *sp = *sp + 1;
+        stack[sp] = registers[lineInfo.value1];
     }
 
     // if type1 is a variable
     else if (lineInfo.type1==2){
-        stack[*sp] = variables[lineInfo.value1];
-        *sp = *sp + 1;
+        stack[sp] = variables[lineInfo.value1];
     }
 
     // if type1 is a constant
     else if (lineInfo.type1==3){
-        stack[*sp] = (lineInfo.value1);
-        *sp = *sp + 1;
+        stack[sp] = (lineInfo.value1);
     }
 }
 

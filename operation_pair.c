@@ -18,9 +18,8 @@ void STR(operationInfo lineInfo, int registers[], int variables[], int variables
     }
 }
 
-void POP(operationInfo lineInfo, int stack[],int *sp, int registers[]){
-    registers[lineInfo.value1]=stack[*sp];
-    *sp--;
+void POP(operationInfo lineInfo, int stack[],int sp, int registers[]){
+    registers[lineInfo.value1]=stack[sp-1];
 }// faire sp-- après avoir fait pop pour mettre à jour la stack
 //vérifier que la stack n'est pas vide
 
