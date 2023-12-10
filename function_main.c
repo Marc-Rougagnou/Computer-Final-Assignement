@@ -8,7 +8,6 @@
 
 operationInfo giveInfoLine (char* line, int variables_use[]){//translate the line of binary code into a structure
 
-
     int cpt= 0;
     operationInfo lineInfo;
     lineInfo.line = line;
@@ -139,7 +138,6 @@ int convert_dec(char* tab, int size){
 void wait(){
     //wait for the user to press "ok" + add verification
     char verif[100] = " ";
-
     int result;
     do{
         printf("Enter 'ok' to pass at the next instruction \n");

@@ -9,9 +9,7 @@
 
 void display_register(int registers[]);
 void display_pc(int pc);
-void display_tabPC(char **tabPC);
 void display_stack(int stack[], int sp);
-void display_sp(int sp);
 void display_variables(int variables[], int variables_use[]);
 void display_line(operationInfo lineInfo);
 #endif //COMPUTER_DISPLAY_H

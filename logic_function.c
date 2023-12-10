@@ -3,6 +3,7 @@
 //
 
 #include "logic_function.h"
+#include "math.h"
 
 
 void OR(operationInfo lineInfo, int registers[], int variables[]){

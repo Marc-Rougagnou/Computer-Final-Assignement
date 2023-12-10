@@ -17,8 +17,7 @@ void STR(operationInfo lineInfo, int registers[], int variables[], int variables
 
 void POP(operationInfo lineInfo, int stack[],int sp, int registers[]){
     registers[lineInfo.value1]=stack[sp-1];
-}// faire sp-- après avoir fait pop pour mettre à jour la stack
-//vérifier que la stack n'est pas vide
+}
 
 //LDA operation : LDA <reg1> <reg2>/<var>/<const> - OP Code 00000
 //Load register reg1 with the contents of either the contents of reg2, or the memory var or a constant

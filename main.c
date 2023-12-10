@@ -85,9 +85,6 @@ int main() {
     }while(choice != 1 && choice != 2);
 
 
-
-
-
     printf("\nStart the execution: \n\n");
     //browse table tabPC (pc is line +1)
 
@@ -215,7 +212,6 @@ int main() {
         display_variables(variables, variables_use);
         //display all the stack
         display_stack(stack, sp);
-
     }
     printf("The program is finished\n");
 }
