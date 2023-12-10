@@ -1,4 +1,4 @@
-# Computer-Final-Assignement
+# Computer-Final-Assignment
 
 ## Introduction
 This is the final project of Computer Architecture course.
