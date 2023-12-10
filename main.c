@@ -34,7 +34,7 @@ int main() {
     char **tabPC = malloc(32 * sizeof(char *));
 
     //Reading of the test.txt file
-    FILE *fichier = fopen("..\\test.txt", "r");
+    FILE *fichier = fopen("..\\prog1.txt", "r");
     if (fichier != NULL) {
 
         // Read by pack of 32 characters
